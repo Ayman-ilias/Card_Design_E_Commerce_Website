@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <style>
+        .text-overlay {
+            position: absolute;
+            bottom: calc(100% + 0.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-200">
+    <div class="relative group">
+        <div class="absolute inset-0 bg-white rounded-lg shadow-lg blur-sm group-hover:blur-none transition duration-300">
+        </div>
+        <div
+            class="relative w-72 h-auto bg-white rounded-lg shadow-lg p-4 group-hover:scale-105 transition duration-300">
+            <div class="absolute top-2 left-2 bg-blue-100 text-blue-500 text-xs px-2 py-1 rounded">-10%</div>
+            <div class="flex justify-center mt-10">
+                <img class="max-w-full max-h-full w-48 h-58 object-contain" src="./iPhone-14-Pro-Max-PNG.png"
+                    alt="Apple iPhone 15 Pro">
+            </div>
+            <div class="absolute top-2 right-2 flex gap-2">
+                <div class="icon-container relative">
+                    <div id="wishlist-icon" class="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition group">
+                        <i class="fa-solid fa-heart" style="color: #ff1f40;"></i>
+                    </div>
+                    <div id="wishlist-text" class="text-overlay opacity-0">
+                        <span class="text-2xs text-red-500 bg-white px-2 py-1 rounded whitespace-nowrap">Add to wishlist</span>
+                        <div class="w-2 h-2 bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+                    </div>
+                </div>
+                <div class="icon-container relative">
+                    <div id="details-icon" class="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition group">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div id="details-text" class="text-overlay opacity-0">
+                        <span class="text-2xs text-gray-500 bg-white px-2 py-1 rounded whitespace-nowrap">View Details</span>
+                        <div class="w-2 h-2 bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="mt-6 text-lg font-semibold text-center">Apple iPhone 15 Pro</h2>
+            <div class="flex items-center justify-center mt-2">
+                <div class="text-yellow-500 mr-1 text-2xs">
+                    <i class="fa-solid fa-star" style="color: #f6c800;"></i>
+                    <i class="fa-solid fa-star" style="color: #f6c800;"></i>
+                    <i class="fa-solid fa-star" style="color: #f6c800;"></i>
+                    <i class="fa-solid fa-star" style="color: #f6c800;"></i>
+                    <i class="fa-solid fa-star-half" style="color: #f6c800;"></i>
+                </div>
+                <button class="text-gray-500 text-2xs">(97)</button>
+            </div>
+            <div class="flex items-center justify-between mt-4">
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center">
+                        <div class="line-through text-red-500 font-bold mr-2">$999.00</div>
+                    </div>
+                    <div class="mt-1 text-2xl font-semibold">$899.00</div>
+                </div>
+                <div class="icon-container relative">
+                    <button id="cart-icon" class="bg-blue-500 p-2 w-14 h-14 rounded-lg flex items-center justify-center hover:bg-gray-500 transition group">
+                        <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                    </button>
+                    
+                    <div id="cart-text" class="text-overlay opacity-0">
+                        <span class="text-2xs text-blue-500 bg-white px-2 py-1 rounded whitespace-nowrap">Add to cart</span>
+                        <div class="w-2 h-2 bg-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const wishlistIcon = document.getElementById('wishlist-icon');
+        const wishlistText = document.getElementById('wishlist-text');
+        const detailsIcon = document.getElementById('details-icon');
+        const detailsText = document.getElementById('details-text');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartText = document.getElementById('cart-text');
+
+        wishlistIcon.addEventListener('mouseover', () => {
+            wishlistText.style.opacity = '1';
+        });
+
+        wishlistIcon.addEventListener('mouseout', () => {
+            wishlistText.style.opacity = '0';
+        });
+
+        detailsIcon.addEventListener('mouseover', () => {
+            detailsText.style.opacity = '1';
+        });
+
+        detailsIcon.addEventListener('mouseout', () => {
+            detailsText.style.opacity = '0';
+        });
+        cartIcon.addEventListener('mouseover', () => {
+            cartText.style.opacity = '1';
+        });
+
+        cartIcon.addEventListener('mouseout', () => {
+            cartText.style.opacity = '0';
+        })
+    </script>
+</body>
+
+</html>
